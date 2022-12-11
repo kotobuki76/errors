@@ -3,6 +3,8 @@ package errors
 import (
 	"reflect"
 	"testing"
+
+	"github.com/kotobuki76/log"
 )
 
 func TestErrors(t *testing.T) {
@@ -33,6 +35,11 @@ func TestToErrorItem(t *testing.T) {
 
 	str := "test done"
 
+	log.Debugf("test")
+	log.Infof("test")
+	log.Warningf("test")
+	log.Errorf("test")
+	log.Criticalf("test")
 	err := New(-1, "test", str)
 
 	errItem := ToErrorItem(err)

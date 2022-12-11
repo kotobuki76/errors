@@ -5,6 +5,8 @@ import (
 	"reflect"
 	"runtime"
 	"strconv"
+
+	"github.com/kotobuki76/log"
 )
 
 // struct for detailed error construct contains code, message, type and additional data
@@ -50,6 +52,16 @@ func New(
 		},
 		Func: f.Name(),
 	}
+
+	//エラー発生時にログも出す
+	log.LogfWithDepth(log.LOG_LEVEL_ERROR, 2, "=====================")
+	log.LogfWithDepth(log.LOG_LEVEL_ERROR, 2, "Error Occurs")
+	log.LogfWithDepth(log.LOG_LEVEL_ERROR, 2, "File:%s", file)
+	log.LogfWithDepth(log.LOG_LEVEL_ERROR, 2, "Line:%d", line)
+	log.LogfWithDepth(log.LOG_LEVEL_ERROR, 2, "message:%s", message)
+	log.LogfWithDepth(log.LOG_LEVEL_ERROR, 2, "message:%v", data)
+	log.LogfWithDepth(log.LOG_LEVEL_ERROR, 2, "=====================")
+
 	return &err
 }
 
